@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios'
 import styled from 'styled-components'
 
 
@@ -71,9 +72,23 @@ const StyledCharBox = styled.div`
     }
 `
 
+
+
 // Write your Character component here
 export default function Characters (prop){
     const {info} = prop
+    const [firstEpisode, setFirstEpisode]= useState('')
+
+    useEffect(() =>{
+        axios.get(`${info.episode[0]}`)
+            .then(res =>{
+                setFirstEpisode(res.data.name)
+            })
+            .catch(err =>{
+            console.log(err)
+            })
+        }, [])
+
     return(
         <StyledCharBox className='charCard'>
             <img src={info.image} alt=''/>
@@ -88,7 +103,7 @@ export default function Characters (prop){
                 </section>
                 <section>
                     <h3>First Seen In:</h3>
-                    <p>{info.episode[0]}</p>
+                    <p>{firstEpisode}</p>
                 </section>
             </div>
         </StyledCharBox>
