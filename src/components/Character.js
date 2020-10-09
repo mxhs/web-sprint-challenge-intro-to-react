@@ -11,8 +11,15 @@ const StyledCharBox = styled.div`
     font-family: 'Roboto' ;
     font-weight: 700;
     *{
-        border: 1px solid lightgoldenrodyellow;
+        /* border: 1px solid lightgoldenrodyellow; */
     }
+
+    h2, p, h3{
+        margin: 0;
+        padding: 0;
+    }
+
+    
 
     .charCard{
         margin: 2% auto;
@@ -30,26 +37,29 @@ const StyledCharBox = styled.div`
         object-fit: cover;
     }
 
-    p{
+
+    p, h3{
         font-weight: 400;
+        /* margin: 0; */
+        font-size: 1.2rem;
     }
 
     section{
         display: flex;
         flex-direction: column;
         text-align: left; 
-        margin: 2% auto;
-        /* justify-content: space-around; */
+        justify-content: baseline;
+        width: 100%;
+        margin-bottom: 8%;
     }
 
     h3{
         color: #9e9e9e;
-        font-weight: 400;
-        font-size: 1rem;
+        font-size: .8rem;
     }
 
     .charInfo{
-        background-color: rgba(60, 62, 68, .85);
+        background-color: rgba(60, 62, 68, .95);
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
         padding: .75rem;
@@ -57,6 +67,7 @@ const StyledCharBox = styled.div`
         flex-direction: column;
         justify-content: baseline;
         align-items: baseline;
+        width: 32%;
     }
 `
 
@@ -77,7 +88,7 @@ export default function Characters (prop){
                 </section>
                 <section>
                     <h3>First Seen In:</h3>
-                    <p>{info.episode[0].name}</p>
+                    <p>{info.episode[0]}</p>
                 </section>
             </div>
         </StyledCharBox>
